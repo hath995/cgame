@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "target": "es5",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "outDir": "./dist/",
+        "jsx": "react"
+
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/*",
+        "test/*"
+    ]
+}
