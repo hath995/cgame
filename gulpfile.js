@@ -18,7 +18,7 @@ gulp.task('build', (cb) => {
 });
 
 gulp.task('pre-test', ['build'], function () {
-  return gulp.src(['src/*.js'])
+  return gulp.src(['dist/**/*.js'])
     // Covering files 
     .pipe(istanbul({
       instrumenter: isparta.Instrumenter
@@ -35,6 +35,11 @@ gulp.task('test', ['pre-test'], function () {
     // Enforce a coverage of at least 90% 
     .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
+
+gulp.task('watch', function() {
+    gulp.watch(['src/**/*.ts', 'test/**/*.ts'], ['test'])
+})
+gulp.task('default', ['watch']);
 
 gulp.task('remap', function() {
     return gulp.src('coverage/coverage-final.json')
