@@ -3,6 +3,7 @@ import {Monster} from './monster'
 export type Colors =  "red" | "green" | "blue" | "yellow" | "neutral";
 export type TileKind = "castle" | "tower" | Colors;
 
+const CM: ReadonlyArray<number> = [1, 1.5, 1.8, 2, 2.2];
 export class Tile {
     monster: Monster | null;
     players: Player[];
@@ -18,9 +19,19 @@ export class Tile {
         this.players = [];
         this.connections = [];
         this.kind = kind;
+        this.base_value = 100;
         this.value = 100;
         this.level = 1
         this.owner = null;
+    }
+
+    levelUp() {
+        this.level++;
+        this.value = this.valueCalc()
+    }
+
+    valueCalc() {
+        return Math.floor(this.base_value * Math.pow(2, this.level - 1) * this.owner.);
     }
 }
 

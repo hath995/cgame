@@ -5,6 +5,10 @@ export type ItemKind = "armor" | "weapon" | "accessory" | "scroll";
 export class Card {
     constructor(public readonly name: string, public readonly cost: number) {
     }
+
+    canPlayCard(player: Player, tile?: Tile): boolean {
+        return player.money >= this.cost;
+    }
 }
 
 export class MonsterCard extends Card {
@@ -24,7 +28,7 @@ export class MonsterCard extends Card {
         this.color = color;
     }
 
-    canPlayCard(player: Player, tile: Tile) {
+    canPlayCard(player: Player, tile: Tile): boolean {
         if(tile.kind === "castle" || tile.kind === "tower") {
             return false;
         }else {

@@ -21,7 +21,7 @@
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "gulp-istanbul": "^1.1.1",
-    "gulp-mocha": "^4.1.0",
+    "gulp-mocha": "^3.0.1",
     "isparta": "^4.0.0",
     "remap-istanbul": "^0.9.5",
     "source-map-loader": "^0.2.1",

@@ -24,6 +24,7 @@
     {
       "id":4,
       "connections":[5],
+      "turn": "right",
       "type":"red"
     },
     {
@@ -39,6 +40,7 @@
     {
       "id":13,
       "connections":[7],
+      "turn": "right",
       "type":"tower"
     },
     {
@@ -59,6 +61,7 @@
     {
       "id":10,
       "connections":[11],
+      "turn": "right",
       "type":"green"
     },
     {

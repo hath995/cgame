@@ -18,17 +18,17 @@ gulp.task('build', (cb) => {
 });
 
 gulp.task('pre-test', ['build'], function () {
-  return gulp.src(['dist/**/*.js'])
+  return gulp.src(['dist/src/**/*.js'])
     // Covering files 
-    .pipe(istanbul({
+    .pipe(istanbul(/*{
       instrumenter: isparta.Instrumenter
-    }))
+    }*/))
     // Force `require` to return covered files 
     .pipe(istanbul.hookRequire());
 });
  
 gulp.task('test', ['pre-test'], function () {
-  return gulp.src(['dist/test/*.js'])
+  return gulp.src(['dist/test/**/*.js'])
     .pipe(mocha())
     // Creating the reports after tests ran 
     .pipe(istanbul.writeReports())
