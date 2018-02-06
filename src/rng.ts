@@ -1,7 +1,7 @@
 
 export interface RNG {
     //nextInt: () => [number, RNG]
-    nextInt(): [number, RNG]
+    nextInt16(): [number, RNG]
 }
 
 //type State<S, A> = (s:S) => [A, S]
@@ -15,7 +15,7 @@ export class States {
     }
 }
 
-type Rand<A> = State<RNG, A>
+export type Rand<A> = State<RNG, A>
 
 
 
@@ -23,7 +23,7 @@ export class SimpleRNG implements RNG {
     constructor(public readonly seed: number) {
     }
 
-    nextInt(): [number, RNG] {
+    nextInt16(): [number, RNG] {
         let newSeed = (this.seed * 0x5DEECE66D + 0xB) & 0xFFFFFFFFFFFF
         let nextRNG = new SimpleRNG(newSeed)
         let n = newSeed >>> 16
@@ -52,11 +52,16 @@ export class SimpleRNG implements RNG {
     static both<A, B>(ra: Rand<A>, rb: Rand<B>): Rand<[A,B]> {
         return SimpleRNG.map2(ra, rb, (a:A,b:B): [A,B] => [a,b])
     }
-    static int(r:RNG): [number, RNG] {
-        return r.nextInt();
+    static int(r: RNG): [number, RNG] {
+        return r.nextInt16();
     }
+    static float(r: RNG) {
+        let [a, rn] = r.nextInt16();
+        return [a / Math.pow(2, 16), rn];
+    }
+
     static char(ra: RNG): [string, RNG] {
-        let [a, r] = ra.nextInt();
+        let [a, r] = ra.nextInt16();
         return [String.fromCharCode(a % 256), r];
     }
 
