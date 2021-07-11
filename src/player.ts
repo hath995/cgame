@@ -1,10 +1,10 @@
 import {Token} from './token';
 import {Card} from './card';
-import {Colors} from './Tile';
+export type Colors =  "red" | "green" | "blue" | "yellow" | "neutral";
 
 
 type Chain  = {
-    [color in Colors]?: number;
+    [color: string]: number;
 }
 
 export class Player extends Token {

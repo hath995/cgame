@@ -1,5 +1,8 @@
 
 /// <reference path="../typings/index.d.ts" />
+interface TestOne {
+  ha: boolean;
+}
 import {MonsterCard} from '../src/card';
 import {Player} from '../src/player';
 import {Tile} from '../src/tile'

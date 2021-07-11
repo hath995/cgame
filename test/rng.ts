@@ -49,6 +49,6 @@ describe('SimpleRNG', async () => {
   })
 
   it('should create an arbitraryily long random sequence generator', () => {
-    let sequenceGen = SimpleRNG.both([SimpleRNG.boolean); })
+    let sequenceGen = SimpleRNG.both([SimpleRNG.boolean]); })
 });
 
